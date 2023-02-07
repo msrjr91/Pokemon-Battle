@@ -11,7 +11,7 @@ const inventoryItems = [{
 },
 {
   "id": "swsh35-51",
-  "name": "Full Heal",
+  "name": "Full-Heal",
   "supertype": "Trainer",
   "rules": null,
   "images": {
@@ -21,7 +21,7 @@ const inventoryItems = [{
 },
 {
   "id": "base1-90",
-  "name": "Super Potion",
+  "name": "Super-Potion",
   "supertype": "Trainer",
   "rules": 60,
   "images": {
@@ -31,8 +31,15 @@ const inventoryItems = [{
 }]
 
 const addItems = () => {
-  
+  let itemsBag = document.querySelector('.all-cards')
+  inventoryItems.forEach((item) => {
+    let newItem = document.createElement('div')
+    newItem.innerHTML = `<img class="item" id="${item.name}" src='${item.images.small}' alt='${item.id}'></img>`
+    itemsBag.append(newItem)
+  })
 }
+
+addItems()
 
 
 // this function only selects the very first version of the card
@@ -68,7 +75,6 @@ async function getData(event){
       console.log("something went wrong...", err)
     })
 }
-
 
 let button = document.querySelector('#searchButton')
 button.onclick = getData
