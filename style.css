@@ -4,12 +4,6 @@ body {
   text-align: center;
 }
 
-.search-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: .25rem;
-} */
-
 input {
   font-size: 1rem;
 }
@@ -21,7 +15,8 @@ input {
 .battle-space {
   height:50vh;
   width: auto;
-  border: 1px solid white; 
+  border: 1px solid white;
+  background-color: rgb(115, 102, 102); 
 }
 
 .opponent {
@@ -47,16 +42,13 @@ input {
   position: relative; 
   margin-left: auto; 
   bottom: 0;
-  /* display: flex;
-  justify-content: flex-end; */
-  /* display: inline-block; */
 }
 .opponent-current-card {
   position: absolute;
-  
+  border: 1px solid white;
 }
 .opponent-health {
-  border: 1px solide white;
+  border: 3px solide white;
   padding-top: 10px;
 }
 
@@ -82,19 +74,18 @@ input {
   height: 90%;
   width: 35%;
   position: relative; 
-  
 }
 
 .player-current-card {
-  border: 1px solid white;
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  left: 40px;
 }
 
 
-
-
-
-
+.inventory {
+  opacity: 0;
+}
 
 .all-cards {
   border: 1px solid white;
@@ -106,24 +97,29 @@ input {
 
 
 
-
 img {
   border-radius: 12px;
-  max-height: 120px;
+  max-height: 70px;
 }
 
-.current-playing {
-  max-height: 200px;
+.current-playing,
+.item {
+  max-height: 180px;
 }
 
 @media screen and (max-width: 1000px) {
   .all-cards {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     /* flex-wrap: wrap; */
   }
 
   img {
-    max-height: 100px;
+    height: 100px;
+  }
+
+  .current-playing,
+  .item {
+    height: 130px
   }
 }

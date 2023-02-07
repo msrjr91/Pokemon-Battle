@@ -1,7 +1,41 @@
+//ITEM OBJECTS:
+const inventoryItems = [{
+  "id": "xy0-37",
+  "name": "Potion",
+  "supertype": "Trainer",
+  "rules": 30,
+  "images": {
+    "small": "https://images.pokemontcg.io/xy0/37.png",
+    "large": "https://images.pokemontcg.io/xy0/37_hires.png"
+    }
+},
+{
+  "id": "swsh35-51",
+  "name": "Full Heal",
+  "supertype": "Trainer",
+  "rules": null,
+  "images": {
+    "small": "https://images.pokemontcg.io/swsh35/51.png",
+    "large": "https://images.pokemontcg.io/swsh35/51_hires.png"
+    }
+},
+{
+  "id": "base1-90",
+  "name": "Super Potion",
+  "supertype": "Trainer",
+  "rules": 60,
+  "images": {
+    "small": "https://images.pokemontcg.io/base1/90.png",
+    "large": "https://images.pokemontcg.io/base1/90_hires.png"
+    }
+}]
+
+const addItems = () => {
+  
+}
 
 
-
-
+// this function only selects the very first version of the card
 const selectCard = (res) => {
   let cardDisplay = document.querySelector('.card-container')
   let candidateArr = []
@@ -10,16 +44,12 @@ const selectCard = (res) => {
       candidateArr.push(res.data[i])
     }
   }
-  // let candidate = document.createElement('p')
-  cardDisplay.innerHTML = `<img src='${candidateArr[0].images.small}' alt='${res.data[0].name}'>`
+  cardDisplay.innerHTML = `<img class="current-playing" src='${candidateArr[0].images.small}' alt='${res.data[0].name}'>`
   console.log(candidateArr[0])
-  // candidatesList.append(candidate)
   }
 
-
+// connect to pokemon tcg api 
 async function getData(event){
-  // event.preventDefault()
-
   let textInput = document.querySelector('#inputBar').value
   const url =  `https://api.pokemontcg.io/v2/cards?q=name:${textInput}`
 
