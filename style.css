@@ -4,8 +4,27 @@ body {
   text-align: center;
 }
 
+form {
+  border: 2px solide white;
+  border-radius: 12px;
+}
+
 input {
   font-size: 1rem;
+  padding: 12px;
+  border-radius: 12px; 
+  color: gray;
+  border: none;
+  /* width: 20%; */
+}
+
+.start-button {
+  padding: 18px;
+  border-radius: 12px;
+  color: gray;
+  border: none;
+  margin-top: 10px;
+  font-size: 20px;
 }
 
 .card-container {
@@ -29,10 +48,10 @@ input {
   border: 1px solid white;
   width: 60%;
   height: 40%;
-  /* display: inline-block; */
   position: absolute;
   display: flex;
   justify-content: space-around;
+  opacity: 1; 
 }
 
 .opponent-current {
@@ -99,7 +118,7 @@ input {
 
 img {
   border-radius: 12px;
-  max-height: 70px;
+  max-height: 90px;
 }
 
 .current-playing,
