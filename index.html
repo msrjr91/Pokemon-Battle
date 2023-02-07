@@ -9,17 +9,63 @@
 </head>
 <body>
 
-  <h1 class="title"></h1>
+  <h1 class="title">Pokemon Card Battle</h1>
   <form>
-    <input type="text"  value="" placeholder="Enter text here"  id="inputBar">
+    <input type="text" value="" placeholder="Enter text here"  id="inputBar">
     <input type="button"  value="Click here" id="searchButton">
   </form>
 
 
   <div class="card-container">
-    <ul class="candidates">
-      
-    </ul>
+
+  </div>
+  <div class="battle-container">
+    <h2>Battle Arena</h2>
+    <div class="battle-space">
+      <div class="opponent">
+        <div class="opponent-party">
+          <div class="pokemon"><img src="https://images.pokemontcg.io/base4/4.png'" alt="pokemon"></div>
+          <div class="pokemon"><img src="https://images.pokemontcg.io/base4/4.png'" alt="pokemon"></div>
+          <div class="pokemon"><img src="https://images.pokemontcg.io/base4/4.png'" alt="pokemon"></div>
+          <div class="pokemon"><img src="https://images.pokemontcg.io/base4/4.png'" alt="pokemon"></div>
+        </div>
+        <div class="opponent-current">
+          <div class = opponenent-current-card>
+            <div class="opponent-health">
+              INSERT HEALTH BAR HERE
+            </div>  
+            <img class="current-playing" src='https://images.pokemontcg.io/base4/4.png' alt='pokemon'>
+          </div>
+        </div>
+      </div>    
+      <div class="player">
+        <div class="player-party">
+          <div class="pokemon"><img src="https://images.pokemontcg.io/base4/4.png'" alt="pokemon"></div>
+          <div class="pokemon"><img src="https://images.pokemontcg.io/base4/4.png'" alt="pokemon"></div>
+          <div class="pokemon"><img src="https://images.pokemontcg.io/base4/4.png'" alt="pokemon"></div>
+          <div class="pokemon"><img src="https://images.pokemontcg.io/base4/4.png'" alt="pokemon"></div>
+        </div>
+        <div class="player-current">        
+          <div class="player-current-card">
+            <img class="current-playing" src="https://images.pokemontcg.io/mcd19/5.png" alt="pokemon">
+            <div class="player-health">
+              INSERT HEALTH BAR HERE
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="party">
+    <h2>Your Items</h2>
+    <div class="all-cards">
+      <div class="card"><img src='https://images.pokemontcg.io/xy0/37.png' alt='pokemon'></div>
+      <div class="card"><img src='https://images.pokemontcg.io/xy0/37.png' alt='pokemon'></div>
+      <div class="card"><img src='https://images.pokemontcg.io/swsh35/51.png' alt='pokemon'></div>  
+    </div>
+   
   </div>
 
   <script src="app.js"></script>

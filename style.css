@@ -1,0 +1,129 @@
+body {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+.search-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+} */
+
+input {
+  font-size: 1rem;
+}
+
+.card-container {
+  margin-top: 20px; 
+}
+
+.battle-space {
+  height:50vh;
+  width: auto;
+  border: 1px solid white; 
+}
+
+.opponent {
+  border: 1px solid white;
+  height: 50%;
+  position: relative;
+}
+
+.opponent-party {
+  border: 1px solid white;
+  width: 60%;
+  height: 40%;
+  /* display: inline-block; */
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+}
+
+.opponent-current {
+  border: 1px solid white; 
+  height: 90%;
+  width: 35%;
+  position: relative; 
+  margin-left: auto; 
+  bottom: 0;
+  /* display: flex;
+  justify-content: flex-end; */
+  /* display: inline-block; */
+}
+.opponent-current-card {
+  position: absolute;
+  
+}
+.opponent-health {
+  border: 1px solide white;
+  padding-top: 10px;
+}
+
+.player {
+  border: 1px solid white;
+  height: 50%;
+  position: relative;
+}
+
+.player-party {
+  border: 1px solid white;
+  height: 40%;
+  width: 60%;
+  position: absolute;
+  right: 0;
+  bottom: 0; 
+  display: flex;
+  justify-content: space-around;
+}
+
+.player-current {
+  border: 1px solid white; 
+  height: 90%;
+  width: 35%;
+  position: relative; 
+  
+}
+
+.player-current-card {
+  border: 1px solid white;
+  position: relative;
+}
+
+
+
+
+
+
+
+.all-cards {
+  border: 1px solid white;
+  border-radius: 18px;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+
+
+
+img {
+  border-radius: 12px;
+  max-height: 120px;
+}
+
+.current-playing {
+  max-height: 200px;
+}
+
+@media screen and (max-width: 1000px) {
+  .all-cards {
+    display: flex;
+    justify-content: center;
+    /* flex-wrap: wrap; */
+  }
+
+  img {
+    max-height: 100px;
+  }
+}

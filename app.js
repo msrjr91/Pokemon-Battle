@@ -3,21 +3,22 @@
 
 
 const selectCard = (res) => {
-  let candidatesList = document.querySelector('.candidates')
+  let cardDisplay = document.querySelector('.card-container')
   let candidateArr = []
   for(i = 0; i < res.data.length; i++){
     if(res.data[i].id.startsWith('base')){
       candidateArr.push(res.data[i])
     }
   }
-  let candidate = document.createElement('li')
-  candidate.innerHTML = `<img src='${candidateArr[0].images.small}' alt='${res.data[0].name}'>`
-  candidatesList.append(candidate)
+  // let candidate = document.createElement('p')
+  cardDisplay.innerHTML = `<img src='${candidateArr[0].images.small}' alt='${res.data[0].name}'>`
+  console.log(candidateArr[0])
+  // candidatesList.append(candidate)
   }
 
 
 async function getData(event){
-  event.preventDefault()
+  // event.preventDefault()
 
   let textInput = document.querySelector('#inputBar').value
   const url =  `https://api.pokemontcg.io/v2/cards?q=name:${textInput}`
@@ -30,7 +31,7 @@ async function getData(event){
       return res.json()
     })
     .then(res => {
-
+      console.log
       selectCard(res)
     })
     .catch(err => {
@@ -38,5 +39,14 @@ async function getData(event){
     })
 }
 
+
 let button = document.querySelector('#searchButton')
 button.onclick = getData
+
+const inputBar = document.getElementById('inputBar')
+inputBar.addEventListener("keypress", (event)=>{
+  if(event.key === 'Enter'){
+    event.preventDefault()
+    getData()
+  }
+})
