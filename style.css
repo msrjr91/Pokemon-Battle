@@ -2,11 +2,12 @@ body {
   background-color: black;
   color: white;
   text-align: center;
+  height: 100vh;
 }
 
 form {
-  border: 2px solide white;
   border-radius: 12px;
+  opacity: 1;
 }
 
 input {
@@ -18,6 +19,15 @@ input {
   /* width: 20%; */
 }
 
+.current-playing {
+  opacity: 1;
+}
+
+.add-pokemon:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 .start-button {
   padding: 18px;
   border-radius: 12px;
@@ -27,6 +37,16 @@ input {
   font-size: 20px;
 }
 
+.start-button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+input[type=button]:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 .card-container {
   margin-top: 20px; 
 }
@@ -34,28 +54,29 @@ input {
 .battle-space {
   height:50vh;
   width: auto;
-  border: 1px solid white;
+  /* border: 1px solid white; */
   background-color: rgb(115, 102, 102); 
 }
 
 .opponent {
-  border: 1px solid white;
+  /* border: 1px solid white; */
   height: 50%;
   position: relative;
 }
 
 .opponent-party {
-  border: 1px solid white;
+  /* border: 1px solid white; */
   width: 60%;
   height: 40%;
   position: absolute;
   display: flex;
   justify-content: space-around;
-  opacity: 1; 
+  opacity: 0; 
+  transition: opacity 5s;
 }
 
 .opponent-current {
-  border: 1px solid white; 
+  /* border: 1px solid white;  */
   height: 90%;
   width: 35%;
   position: relative; 
@@ -64,21 +85,21 @@ input {
 }
 .opponent-current-card {
   position: absolute;
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }
 .opponent-health {
-  border: 3px solide white;
+  /* border: 3px solide white; */
   padding-top: 10px;
 }
 
 .player {
-  border: 1px solid white;
+  /* border: 1px solid white; */
   height: 50%;
   position: relative;
 }
 
 .player-party {
-  border: 1px solid white;
+  /* border: 1px solid white; */
   height: 40%;
   width: 60%;
   position: absolute;
@@ -89,7 +110,7 @@ input {
 }
 
 .player-current {
-  border: 1px solid white; 
+  /* border: 1px solid white;  */
   height: 90%;
   width: 35%;
   position: relative; 
@@ -104,10 +125,11 @@ input {
 
 .inventory {
   opacity: 1;
+  margin-bottom: 50px;
 }
 
 .all-cards {
-  border: 1px solid white;
+  /* border: 1px solid white; */
   border-radius: 18px;
   height: auto;
   display: flex;
@@ -121,6 +143,8 @@ img {
   max-height: 90px;
 }
 
+.rival-current,
+.player-current-card,
 .current-playing,
 .item {
   max-height: 180px;
@@ -137,6 +161,9 @@ img {
     height: 100px;
   }
 
+
+  .rival-current,
+  .player-current-card,
   .current-playing,
   .item {
     height: 130px

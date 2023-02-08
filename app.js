@@ -1,4 +1,6 @@
 //INITIATE GAME DEFAULTS
+//counter for num of pokemon user has selected
+let count = 0
 //Items objects:
 const inventoryItems = [{
   "id": "xy0-37",
@@ -30,9 +32,17 @@ const inventoryItems = [{
     "large": "https://images.pokemontcg.io/base1/90_hires.png"
     }
 }]
-
 //player and rival array consisting of pokemon in respective parties
 let player = []
+
+let playerStats = {
+  "numPokemon": 4,
+  "turn": false,
+  "ko": false,
+  "items": 3,
+  "currentPokemon": [],
+}
+
 let rival = [{
   "id": "base3-4",
   "name": "Dragonite",
@@ -471,7 +481,15 @@ let rival = [{
         }
         }
         }]
-//rival's party: Dragonite, Tentacruel, Ninetales, Gengar
+
+let rivalStats = {
+  "numPokemon": 4,
+  "turn": false,
+  "ko": false,
+  "items": 0,
+  "currentPokemon": [],
+}
+
 
 //auto add the items given to player by default (rival will not use items)
 const addItems = () => {
@@ -484,10 +502,6 @@ const addItems = () => {
 }
 //call auto add items function to initiate items inventory on page load
 addItems()
-
-//create for loop to add event listener for each item 
-
-
 
 
 // this function only selects the very first version of the card to ever release with event listener to add pokemon to party on click
@@ -502,8 +516,7 @@ const selectCard = (res) => {
   }
   //display the searched pokemon on screen
   cardDisplay.innerHTML = `<img class="current-playing" src='${candidateArr[0].images.small}' alt='${res.data[0].name}'>`
-  console.log(candidateArr[0])
-  //create event listener for option to add searched pokemon into party
+  //event listener for option to add searched pokemon into party
   let searchedPokemon = document.querySelector('.current-playing')
   searchedPokemon.addEventListener("click", () => {
     let playerParty = document.querySelector('.player-party')
@@ -513,25 +526,99 @@ const selectCard = (res) => {
 
     //push the selected pokemon's object array into player list to access attributes
     player.push(candidateArr[0])
-    console.log(player)
-  })  
+    count++
+    if(count == 4){
+      initiateBattleGround()
+      // pokemonBattle()
+    }
+    })  
 }
 
+
 //create function to show "start battle" button when user's party has four pokemon
-const startBattle = () => {
-  let battleSpace = document.querySelector('.battle-container')
-  let startButton = document.createElement('button')
-  startButton.className = 'start-button'
-  startButton.innerHTML = "Start Battle!"
-  battleSpace.append(startButton)
+const initiateBattleGround = () => {
+  if(count >= 4){
+    let battleSpace = document.querySelector('.battle-container')
+    let startButton = document.createElement('button')
+    startButton.className = 'start-button'
+    startButton.innerHTML = "Start Battle!"
+    battleSpace.append(startButton)
+    //start battle event listener
+    startButton.addEventListener("click", () => {
+      document.querySelector('.opponent-party').style.opacity = 1
+      document.querySelector('.searchForm').remove()
+      document.querySelector('.current-playing').remove()
+      startButton.remove()
+      //insert time delay function here to give some time for opacity to fade.
+      //play battle theme mp3 here
+      pokemonBattle()
+    })
+  }
   // startButton.addEventListener("click", someFunc())
 }
 
+const rivalPokemonChoice = () => {
+  //choose random index of remaining pokemon in party to send out
+  let choiceIndex = Math.floor(Math.random() * rival.length)
+  let rivalPokemon = rival[choiceIndex]
+  rivalStats.currentPokemon = rivalPokemon
+  //send pokemon to battle space
+  let rivalPokemonSpace = document.querySelector(".opponent-current-card")
+  let newPokemon = document.createElement('div')
+  newPokemon.innerHTML += `<img class="rival-current" src='${rivalPokemon.images.small}' alt='${rivalPokemon.name}'>`
+  rivalPokemonSpace.append(newPokemon)
+  //display hp
+  let rivalHealth = document.querySelector('.opponent-health')
+  rivalHealth.innerHTML =  `HP:${parseInt(rivalStats.currentPokemon.hp)}`
+  //remove face down card in party to reflect correct total num of pokemon
+  let rivalRemainingParty = document.querySelectorAll(".face-down")
+  rivalRemainingParty[0].remove()
+  // console.log("rival array length before:", rival.length)
+  //remove selected pokemon from party
+  rival.splice(choiceIndex,1)
+  // console.log("rival array length after:", rival.length)
+}
 
+const choosePokemon = () => {
+  const myParty = document.querySelectorAll('.add-pokemon')
+  // let i;
+  for(let i = 0; i < myParty.length; i++){
+    myParty[i].addEventListener("click", () => {
+      playerStats.currentPokemon = player[i]
+
+      //move selected pokemon into battle slot
+      let playerCurrent = document.querySelector(".player-current-card")
+      playerCurrent.innerHTML += `<img class="rival-current" src='${playerStats.currentPokemon.images.small}' alt='${playerStats.currentPokemon.name}'>`
+
+      //display selected pokemon's health
+      let pokemonHealth = document.querySelector('.player-health')
+      pokemonHealth.innerHTML = `HP:${parseInt(playerStats.currentPokemon.hp)}`
+
+      // console.log(myParty[i].getAttribute("id"))
+      console.log("length before: ", player.length)
+      player.splice(i, 1)
+      console.log("length after: ", player.length)
+      myParty[i].remove()
+      // console.log(player[i].name)
+    })
+  }
+}
+
+
+const pokemonBattle = () => {
+  //rival sends out first pokemon
+  rivalPokemonChoice()
+  //player selects any pokemon from party
+  choosePokemon()
+  //determine which pokemon attacks first based on speed stat
+  //determine if user wants to attack or use item
+  //attack function: include element effect, hp reduction
+  //if no remaining pokemon in rival or player's party, then display win or lose message
+  //reload page to play again
+}
 
 // connect to pokemon tcg api 
 async function getData(event){
-
   let textInput = document.querySelector('#inputBar').value
   const url =  `https://api.pokemontcg.io/v2/cards?q=name:${textInput}`
 
@@ -544,17 +631,21 @@ async function getData(event){
     })
     .then(res => {
       selectCard(res)
-      startBattle()
-      // console.log(player)
     })
+    // .then(res => {
+    //   pokemonBattle()
+    // }) 
     .catch(err => {
       console.log("something went wrong...", err)
     })
 }
 
+//press button to submit query:
 let button = document.querySelector('#searchButton')
 button.onclick = getData
 
+
+//press enter to submit query:
 const inputBar = document.getElementById('inputBar')
 inputBar.addEventListener("keypress", (event)=>{
   if(event.key === 'Enter'){
@@ -562,7 +653,3 @@ inputBar.addEventListener("keypress", (event)=>{
     getData()
   }
 })
-
-
-// import data from './rivalParty.json' assert {type:'JSON'}
-// console.log(data)
