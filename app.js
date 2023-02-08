@@ -549,12 +549,11 @@ const initiateBattleGround = () => {
       document.querySelector('.searchForm').remove()
       document.querySelector('.current-playing').remove()
       startButton.remove()
-      //insert time delay function here to give some time for opacity to fade.
       //play battle theme mp3 here
+      //insert time delay function here to give some time for opacity to fade.
       pokemonBattle()
     })
   }
-  // startButton.addEventListener("click", someFunc())
 }
 
 const rivalPokemonChoice = () => {
@@ -581,29 +580,27 @@ const rivalPokemonChoice = () => {
 
 const choosePokemon = () => {
   const myParty = document.querySelectorAll('.add-pokemon')
-  // let i;
   for(let i = 0; i < myParty.length; i++){
     myParty[i].addEventListener("click", () => {
       playerStats.currentPokemon = player[i]
-
       //move selected pokemon into battle slot
       let playerCurrent = document.querySelector(".player-current-card")
       playerCurrent.innerHTML += `<img class="rival-current" src='${playerStats.currentPokemon.images.small}' alt='${playerStats.currentPokemon.name}'>`
-
       //display selected pokemon's health
       let pokemonHealth = document.querySelector('.player-health')
       pokemonHealth.innerHTML = `HP:${parseInt(playerStats.currentPokemon.hp)}`
-
-      // console.log(myParty[i].getAttribute("id"))
-      console.log("length before: ", player.length)
       player.splice(i, 1)
-      console.log("length after: ", player.length)
       myParty[i].remove()
-      // console.log(player[i].name)
+      console.log(playerStats)
     })
   }
 }
 
+const attackSequence = () => {
+  //display pokemon's attacks as event listeners
+
+  //add event listener for item. If item used, turn ends
+}
 
 const pokemonBattle = () => {
   //rival sends out first pokemon

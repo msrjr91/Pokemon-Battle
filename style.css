@@ -85,6 +85,7 @@ input[type=button]:hover {
 }
 .opponent-current-card {
   position: absolute;
+  left: 90px;
   /* border: 1px solid white; */
 }
 .opponent-health {
