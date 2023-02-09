@@ -5,14 +5,14 @@ let songs = {
   victory: false,
 }
 
-let startSong = new Audio('1-01. Opening.mp3')
+let startSong = new Audio('Audio/1-01. Opening.mp3')
 startSong.loop = true
 startSong.play()
 
-let battleSong = new Audio('1-28. Battle (Vs. Gym Leader).mp3')
+let battleSong = new Audio('Audio/1-28. Battle (Vs. Gym Leader).mp3')
 battleSong.loop = true
 
-let victorySong = new Audio('1-29. Victory (Vs. Gym Leader).mp3')
+let victorySong = new Audio('Audio/1-29. Victory (Vs. Gym Leader).mp3')
 victorySong.loop = true
 
 
@@ -60,20 +60,20 @@ const playVictorySong = () => {
 }
 
 const rivalPokemonSong = () => {
-  let rivalSong = new Audio('Growl.mp3')
+  let rivalSong = new Audio('Audio/Growl.mp3')
   rivalSong.loop = false
   rivalSong.play()
 
 }
 
 const playerPokemonSong = () => {
-  let playerSong = new Audio('Roar.mp3')
+  let playerSong = new Audio('Audio/Roar.mp3')
   playerSong.loop = false
   playerSong.play()
 }
 
 const playAttackSong = () => {
-  let attackSong = new Audio('Slash.mp3')
+  let attackSong = new Audio('Audio/Slash.mp3')
   attackSong.loop = false
   attackSong.play()
 }
