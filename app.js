@@ -79,10 +79,6 @@ const playAttackSong = () => {
 }
 
 
-//wait function
-
-
-
 
 //counter for num of pokemon user has selected
 let count = 0
@@ -92,7 +88,7 @@ let player = []
 
 let playerStats = {
   "numPokemon": 4,
-  "turn": false,
+  "turn": true,
   "ko": false,
   "items": 3,
   "currentPokemon": [],
@@ -273,26 +269,9 @@ let rival = [{
         "Colorless"
         ],
         "convertedRetreatCost": 1,
-        "set": {
-        "id": "base3",
-        "name": "Fossil",
-        "series": "Base",
-        "printedTotal": 62,
-        "total": 62,
-        "legalities": {
-        "unlimited": "Legal"
-        },
-        "images": {
-        "symbol": "https://images.pokemontcg.io/base3/symbol.png",
-        "logo": "https://images.pokemontcg.io/base3/logo.png"
-        }
-        },
         "nationalPokedexNumbers": [
         94
         ],
-        "legalities": {
-        "unlimited": "Legal"
-        },
         "images": {
         "small": "https://images.pokemontcg.io/base3/5.png",
         "large": "https://images.pokemontcg.io/base3/5_hires.png"
@@ -381,30 +360,152 @@ const rivalPokemonChoice = () => {
 }
 
 
+const rivalAttackSequence = () => {
+  console.log("num attacks: ", rivalStats.currentPokemon.attacks.length)
+  let rivalAttackIndex = Math.floor(Math.random() * rivalStats.currentPokemon.attacks.length) 
+  console.log("attack index: ", rivalAttackIndex)
+  let rivalAttackChoice = rivalStats.currentPokemon.attacks[rivalAttackIndex].name
+  console.log(rivalAttackChoice)
+  let playerMessage = document.querySelector('.player-attack')
+  
+  let rivalAttackMessage = document.createElement('p')
+  rivalAttackMessage.setAttribute("class", "rival-attack-message")
+  rivalAttackMessage.innerHTML = `${rivalStats.currentPokemon.name} used ${rivalAttackChoice}!`
+  playerMessage.append(rivalAttackMessage) //not displaying
+  console.log(rivalAttackMessage)
+
+  let attackType = rivalStats.currentPokemon.attacks[rivalAttackIndex].cost[0]
+  let damage;
+  if(rivalStats.currentPokemon.attacks[rivalAttackIndex].damage == ''){
+    damage = 10
+  }else{
+    damage = parseInt(rivalStats.currentPokemon.attacks[rivalAttackIndex].damage.replace('+', ''))
+  }
+
+  let trueDamage;
+  let effectivenessDisplay;
+  if(playerStats.currentPokemon.hasOwnProperty("weaknesses")){//not all pokemon have weaknesses so we must check for one
+    if(attackType == playerStats.currentPokemon.weaknesses[0].type){
+      trueDamage = damage * 2
+      effectivenessDisplay = "super effective"
+    }else{
+      trueDamage = damage
+      effectivenessDisplay = ""
+    }
+  }else{
+    if(attackType == playerStats.currentPokemon.resistances[0].type){
+      trueDamage = damage/2
+      effectivenessDisplay = "not very effective"
+    }else{
+      trueDamage = damage
+      effectivenessDisplay = ""
+    }
+  }
+
+  playerStats.currentPokemon.hp = parseInt(playerStats.currentPokemon.hp) - trueDamage
+  let playerHealth = document.querySelector(".player-health")
+  if(playerStats.currentPokemon.hp > 0){
+    playerHealth.innerHTML = `HP: ${playerStats.currentPokemon.hp}`
+  }else{
+    playerHealth.innerHTML = "HP: 0"
+  }
+  
+
+  setTimeout(function(){
+    let rivalMessage = document.querySelector('.rival-attack-message')
+    rivalMessage.remove()
+    if(effectivenessDisplay != ""){
+      let rivalEffectiveness = document.createElement('p')
+      let playerMessage = document.querySelector('.player-attack')
+      rivalEffectiveness.setAttribute("class", "rival-effectiveness")
+      rivalEffectiveness.innerHTML = `It's ${effectivenessDisplay}!`
+      playerMessage.append(rivalEffectiveness)
+      
+    }
+
+    setTimeout(function(){
+      let rivalEffectivenessDisplay = document.querySelector('.rival-effectiveness')
+      rivalEffectivenessDisplay.remove()
+    }, 1500)
+    rivalStats.turn = false
+    playerStats.turn = true
+  }, 1500)
+
+
+  if(playerStats.currentPokemon.hp <= 0){
+    let playerCard = document.querySelector('.player-choice')
+    let playerButtons = document.querySelectorAll('.attack')
+    playerCard.remove()
+    playerButtons.remove()
+    playerStats.numPokemon--
+    if(playerStats.numPokemon > 0){
+      choosePokemon()
+    }else{
+      let losingMessageArea = document.querySelector('.battle-container')
+      
+      let playAgain = document.createElement('button')
+      playAgain.innerHTML = "Play Again"
+      playAgain.setAttribute("class", "play-again")
+      losingMessageArea.prepend(playAgain)
+
+      let losingMessage = document.createElement('h2')
+      losingMessage.innerText = "You Lose!"
+      losingMessageArea.prepend(losingMessage)
+
+      playAgain.addEventListener("click", function(){
+        window.location.reload()
+      })
+
+    }
+
+  }
+  
+}
+
 const attackSequence = (damage, attackType) => {
   //determine damage value with weaknesses and resistance considered:
   let trueDamage;
+  let effectivenessDisplay;
   if(rivalStats.currentPokemon.hasOwnProperty("weaknesses")){//not all pokemone have weaknesses so we must check for one
     if(attackType == rivalStats.currentPokemon.weaknesses[0].type){
       trueDamage = damage * 2
+      effectivenessDisplay = "super effective"
     }else{
       trueDamage = damage
+      effectivenessDisplay = ""
     }
   }else{
     if(attackType == rivalStats.currentPokemon.resistances[0].type){
       trueDamage = damage/2
+      effectivenessDisplay = "not very effective"
     }else{
       trueDamage = damage
+      effectivenessDisplay = ""
     }
   }
 
   rivalStats.currentPokemon.hp = parseInt(rivalStats.currentPokemon.hp) - trueDamage
   let rivalHealth = document.querySelector('.opponent-health')
+  let playerMessage = document.querySelector('.player-attack')
   if(rivalStats.currentPokemon.hp > 0){
     rivalHealth.innerHTML =  `HP: ${rivalStats.currentPokemon.hp}`
   }else{
     rivalHealth.innerHTML =  "HP: 0"
   }
+
+  if(effectivenessDisplay != ''){
+    let effectiveness = document.createElement('p')
+    effectiveness.setAttribute("class", "effectiveness-message")
+    effectiveness.innerHTML = `It's ${effectivenessDisplay}!`
+    playerMessage.append(effectiveness)
+
+    setTimeout(function(){
+      let effectivenessMessage = document.querySelector('.effectiveness-message')
+      effectivenessMessage.remove()
+      
+    }, 1000)
+  }
+
   
   
   if(rivalStats.currentPokemon.hp <= 0){
@@ -433,6 +534,14 @@ const attackSequence = (damage, attackType) => {
     }
 
   }
+  playerStats.turn = false
+  rivalStats.turn = true
+  if(rivalStats.turn){
+    setTimeout(function(){
+      rivalAttackSequence();
+    },2500)
+    
+  }
 }
 
 const choosePokemon = () => {
@@ -450,43 +559,48 @@ const choosePokemon = () => {
       pokemonHealth.innerHTML = `HP:${parseInt(playerStats.currentPokemon.hp)}`
       player.splice(i, 1)
       myParty[i].remove()
-      console.log(rivalStats.currentPokemon)
+
       //add buttons for attacks
       if(playerStats.currentPokemon.hasOwnProperty("attacks")){
         playerStats.currentPokemon.attacks.forEach((attack) => {
-          console.log(attack)
           let attackOptions = document.querySelector('.attack-options')
           let attackButton = document.createElement('button')
           attackButton.setAttribute('class', 'attack')
           attackButton.setAttribute('id', `${attack.name}`)
           attackButton.setAttribute('element', `${attack.cost[0]}`)
-          console.log("attack type: ", attack.cost[0])
           if(attack.damage === ""){
             attackButton.setAttribute('damage', 10) //several attacks have "0 damage" that increases with some chance condition that cannot be replicated here, setting these attacks to default 10 for convenience.
           }else{
             attackButton.setAttribute('damage', `${parseInt(attack.damage.replace('+', ''))}`)
           }
-          console.log(`${parseInt(attack.damage.replace('+', ''))}`)
           attackButton.innerHTML = `${attack.name}`
           attackOptions.append(attackButton)
 
-          attackButton.addEventListener("click", function(){
-            
-            let damage = attackButton.getAttribute('damage')
-            let attackType = attackButton.getAttribute('element')
-            let attackName = attackButton.getAttribute('id')
-            let attackMessage = document.createElement('p')
-            attackMessage.setAttribute("class", "attack-display-message")
-            attackMessage.innerHTML = `${playerStats.currentPokemon.name} used ${attackName}!`
-            let playerMessage = document.querySelector('.player-attack')
-            playerMessage.append(attackMessage)
-            playAttackSong()
-            
-            // document.querySelector('.attack-display-message').remove()
 
 
-            attackSequence(damage, attackType)
-          })
+          if(playerStats.turn){
+            attackButton.addEventListener("click", function(){
+              let damage = attackButton.getAttribute('damage')
+              let attackType = attackButton.getAttribute('element')
+              let attackName = attackButton.getAttribute('id')
+              let attackMessage = document.createElement('p')
+              attackMessage.setAttribute("class", "attack-display-message")
+              attackMessage.innerHTML = `${playerStats.currentPokemon.name} used ${attackName}!`
+              let playerMessage = document.querySelector('.player-attack')
+              playerMessage.append(attackMessage)
+              
+              //time delay to add some suspense to attacks
+              setTimeout(function(){
+                playAttackSong()
+                document.querySelector('.attack-display-message').remove()
+                //deal actual damage
+                attackSequence(damage, attackType)
+              }, 1500)
+            })
+            // rivalAttackSequence()
+          }else if(rivalStats.turn){
+            rivalAttackSequence()
+          }
         })
       }else{ //some pokemon cards don't have attack moves, for this project we give these pokemon a default attack
         let attackOptions = document.querySelector('.attack-options')
@@ -497,10 +611,17 @@ const choosePokemon = () => {
         attackButton.innerHTML = "Struggle"
         attackOptions.append(attackButton)
 
+
         attackButton.addEventListener("click", function(){
+          attackMessage.setAttribute("class", "attack-display-message")
+          attackMessage.innerHTML = `${playerStats.currentPokemon.name} used ${attackName}!`
+          let playerMessage = document.querySelector('.player-attack')
+          playerMessage.append(attackMessage)
           let damage = attackButton.getAttribute('damage')
-          console.log('damage: ', damage)
-          attackSequence(damage)
+          let attackType = attackButton.getAttribute('element')
+
+
+          attackSequence(damage, attackType)
         })
       }
     })
@@ -516,13 +637,9 @@ const pokemonBattle = () => {
   rivalPokemonChoice()
   //player selects any pokemon from party
   choosePokemon()
-  //determine which pokemon attacks first based on speed stat
-  // attackSequence()
-  //determine if user wants to attack or use item
-  //attack function: include element effect, hp reduction
-  //if no remaining pokemon in rival or player's party, then display win or lose message
-  //reload page to play again
 }
+
+
 
 // connect to pokemon tcg api 
 async function getData(event){
