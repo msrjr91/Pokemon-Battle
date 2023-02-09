@@ -1,37 +1,92 @@
 //INITIATE GAME DEFAULTS
+let songs = {
+  starting: true,
+  battle: false,
+  victory: false,
+}
+
+let startSong = new Audio('1-01. Opening.mp3')
+startSong.loop = true
+startSong.play()
+
+let battleSong = new Audio('1-28. Battle (Vs. Gym Leader).mp3')
+battleSong.loop = true
+
+let victorySong = new Audio('1-29. Victory (Vs. Gym Leader).mp3')
+victorySong.loop = true
+
+
+
+let playButton = document.querySelector('.play-music')
+playButton.addEventListener('click', function(){
+  if(songs.starting){
+    startSong.play()
+  }else if(songs.battle){
+    battleSong.play()
+  }else if(songs.victory){
+    victorySong.play()
+  }
+  
+})
+
+let pauseButton = document.querySelector('.pause-music')
+pauseButton.addEventListener("click", function(){
+  if(songs.starting){
+    startSong.pause()
+  }else if(songs.battle){
+    battleSong.pause()
+  }else if(songs.victory){
+    victorySong.pause()
+  }
+  
+})
+
+
+const playBattleSong = () => {
+  songs.starting = false
+  songs.battle = true
+  songs.victory = false
+  startSong.pause()
+  battleSong.play()
+}
+
+const playVictorySong = () => {
+  songs.starting = false
+  songs.battle = false
+  songs.victory = true
+  startSong.pause()
+  battleSong.pause()
+  victorySong.play()
+}
+
+const rivalPokemonSong = () => {
+  let rivalSong = new Audio('Growl.mp3')
+  rivalSong.loop = false
+  rivalSong.play()
+
+}
+
+const playerPokemonSong = () => {
+  let playerSong = new Audio('Roar.mp3')
+  playerSong.loop = false
+  playerSong.play()
+}
+
+const playAttackSong = () => {
+  let attackSong = new Audio('Slash.mp3')
+  attackSong.loop = false
+  attackSong.play()
+}
+
+
+//wait function
+
+
+
+
 //counter for num of pokemon user has selected
 let count = 0
-//Items objects:
-const inventoryItems = [{
-  "id": "xy0-37",
-  "name": "Potion",
-  "supertype": "Trainer",
-  "rules": 30,
-  "images": {
-    "small": "https://images.pokemontcg.io/xy0/37.png",
-    "large": "https://images.pokemontcg.io/xy0/37_hires.png"
-    }
-},
-{
-  "id": "swsh35-51",
-  "name": "Full-Heal",
-  "supertype": "Trainer",
-  "rules": null,
-  "images": {
-    "small": "https://images.pokemontcg.io/swsh35/51.png",
-    "large": "https://images.pokemontcg.io/swsh35/51_hires.png"
-    }
-},
-{
-  "id": "base1-90",
-  "name": "Super-Potion",
-  "supertype": "Trainer",
-  "rules": 60,
-  "images": {
-    "small": "https://images.pokemontcg.io/base1/90.png",
-    "large": "https://images.pokemontcg.io/base1/90_hires.png"
-    }
-}]
+
 //player and rival array consisting of pokemon in respective parties
 let player = []
 
@@ -253,19 +308,6 @@ let rivalStats = {
 }
 
 
-//auto add the items given to player by default (rival will not use items)
-const addItems = () => {
-  let itemsBag = document.querySelector('.all-cards')
-  inventoryItems.forEach((item) => {
-    let newItem = document.createElement('div')
-    newItem.innerHTML = `<img class="item" id="${item.name}" src='${item.images.small}' alt='${item.id}'></img>`
-    itemsBag.append(newItem)
-  })
-}
-//call auto add items function to initiate items inventory on page load
-addItems()
-
-
 // this function only selects the very first version of the card to ever release with event listener to add pokemon to party on click
 const selectCard = (res) => {
   let cardDisplay = document.querySelector('.card-container')
@@ -307,6 +349,7 @@ const initiateBattleGround = () => {
   battleSpace.append(startButton)
   //start battle event listener
   startButton.addEventListener("click", () => {
+    playBattleSong()
     document.querySelector('.opponent-party').style.opacity = 1    
     startButton.remove()
     //play battle theme mp3 here
@@ -325,6 +368,7 @@ const rivalPokemonChoice = () => {
   let rivalPokemonSpace = document.querySelector(".opponent-current-card")
   let newPokemon = document.createElement('div')
   newPokemon.innerHTML += `<img class="rival-current" src='${rivalPokemon.images.small}' alt='${rivalPokemon.name}'>`
+  rivalPokemonSong()
   rivalPokemonSpace.append(newPokemon)
   //display hp
   let rivalHealth = document.querySelector('.opponent-health')
@@ -370,10 +414,22 @@ const attackSequence = (damage, attackType) => {
     if(rivalStats.numPokemon > 0){
       rivalPokemonChoice()
     }else{
+      playVictorySong()
       let winMessageArea = document.querySelector('.battle-container')
-      let winMessage = document.createElement('p')
+      
+      let playAgain = document.createElement('button')
+      playAgain.innerHTML = "Play Again"
+      playAgain.setAttribute("class", "play-again")
+      winMessageArea.prepend(playAgain)
+
+      let winMessage = document.createElement('h2')
       winMessage.innerText = "You Win!"
       winMessageArea.prepend(winMessage)
+
+      playAgain.addEventListener("click", function(){
+        window.location.reload()
+      })
+
     }
 
   }
@@ -388,7 +444,7 @@ const choosePokemon = () => {
       //move selected pokemon into battle slot
       let playerCurrent = document.querySelector(".player-current-card")
       playerCurrent.innerHTML += `<img class="player-choice" src='${playerStats.currentPokemon.images.small}' alt='${playerStats.currentPokemon.name}'>`
-      
+      playerPokemonSong()
       //display selected pokemon's health
       let pokemonHealth = document.querySelector('.player-health')
       pokemonHealth.innerHTML = `HP:${parseInt(playerStats.currentPokemon.hp)}`
@@ -413,13 +469,26 @@ const choosePokemon = () => {
           console.log(`${parseInt(attack.damage.replace('+', ''))}`)
           attackButton.innerHTML = `${attack.name}`
           attackOptions.append(attackButton)
+
           attackButton.addEventListener("click", function(){
+            
             let damage = attackButton.getAttribute('damage')
             let attackType = attackButton.getAttribute('element')
+            let attackName = attackButton.getAttribute('id')
+            let attackMessage = document.createElement('p')
+            attackMessage.setAttribute("class", "attack-display-message")
+            attackMessage.innerHTML = `${playerStats.currentPokemon.name} used ${attackName}!`
+            let playerMessage = document.querySelector('.player-attack')
+            playerMessage.append(attackMessage)
+            playAttackSong()
+            
+            // document.querySelector('.attack-display-message').remove()
+
+
             attackSequence(damage, attackType)
           })
         })
-      }else{
+      }else{ //some pokemon cards don't have attack moves, for this project we give these pokemon a default attack
         let attackOptions = document.querySelector('.attack-options')
         let attackButton = document.createElement('button')
         attackButton.setAttribute('class', 'attack')
@@ -427,6 +496,7 @@ const choosePokemon = () => {
         attackButton.setAttribute('damage', 5)
         attackButton.innerHTML = "Struggle"
         attackOptions.append(attackButton)
+
         attackButton.addEventListener("click", function(){
           let damage = attackButton.getAttribute('damage')
           console.log('damage: ', damage)

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Raleway:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,700&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +11,12 @@
   <title>Document</title>
 </head>
 <body>
+  <div class="music-buttons">
+    <img class="play-music" src="Images/play-button.png" alt="play">
+    <img class="pause-music" src="Images/video-pause-button.png" alt="pause">
+  </div>
 
-
-  <h1 class="title">Pokemon Card Battle</h1>
+  <h1 class="title">Pokemon Battling Card Game</h1>
   <form class="searchForm">
     <input type="text" value="" placeholder="Search Pokemon here"  id="inputBar">
     <input type="button"  value="Search" id="searchButton">
@@ -36,6 +42,9 @@
           <div class="face-down"><img id="hidden" src="https://images.pokemontcg.io/base3/4.png'" alt='Face Down Card'></div>
           <div class="face-down"><img id="hidden" src="https://images.pokemontcg.io/base3/4.png'" alt='Face Down Card'></div>
         </div>
+        <div class="opponent-attack">
+
+        </div>
         <div class="opponent-current">
           <div class="opponent-current-card">
             <div class="opponent-health">
@@ -48,6 +57,7 @@
 
 
       <div class="player">
+        <div class="player-attack"></div>
         <div class="player-party">
 
         </div>
@@ -74,13 +84,13 @@
 
   </div>
 
-  <div class="inventory">
+  <!-- <div class="inventory">
     <h2>Your Items</h2>
     <div class="all-cards">
 
     </div>
    
-  </div>
+  </div> -->
 
   <script src="app.js" type="module"></script>
 </body>

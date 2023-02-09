@@ -1,9 +1,56 @@
 body {
-  background-color: black;
-  color: white;
+  background-color: rgb(227, 227, 227);
+  color: black;
   text-align: center;
   height: 100vh;
+  font-family: raleway; 
 }
+
+.music-buttons {
+  position: absolute;
+  right: 0;
+  top: 0;
+  opacity: 0.8;
+
+}
+
+.play-music {
+  height: 50px;
+}
+
+.pause-music {
+  height: 50px;
+}
+
+.play-music:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.pause-music:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+
+
+
+h1 {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+h2 {
+  color: black;
+  font-size: 35px;
+}
+
+p {
+  margin: 0;
+  font-size: 25px;
+}
+
 
 form {
   border-radius: 12px;
@@ -43,19 +90,26 @@ input {
 }
 
 input[type=button]:hover {
-  cursor: pointer;
+  cursor: url('Poké_Ball_icon.svg.png'), pointer;
   opacity: 0.8;
 }
 
 .card-container {
   margin-top: 20px; 
 }
-
+.battle-container {
+  width: 90%;
+  margin-left: 70px;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+}
 .battle-space {
-  height:50vh;
+  height:70vh;
   width: auto;
   /* border: 1px solid white; */
-  background-color: rgb(115, 102, 102); 
+  background-image: url('Images/battle.jpeg');
+  background-size: cover;
 }
 
 .opponent {
@@ -73,6 +127,8 @@ input[type=button]:hover {
   justify-content: space-around;
   opacity: 0; 
   transition: opacity 5s;
+  margin-top: 20px;
+
 }
 
 .opponent-current {
@@ -85,6 +141,8 @@ input[type=button]:hover {
 }
 .opponent-current-card {
   position: relative;
+  width: 80%;
+  margin-left: auto;
   /* left: 90px; */
   /* border: 1px solid white; */
 }
@@ -119,7 +177,7 @@ input[type=button]:hover {
 .player-current-card {
   position: absolute;
   padding: 0;
-  margin-top: 50px;
+  margin-top: 10px;
   left: 40px;
   height: auto;
   width: auto;
@@ -129,6 +187,7 @@ input[type=button]:hover {
   border: none;
   border-radius: 12px;
   padding: 5px;
+  width: 8rem;
   margin-top: 5px;
   margin-bottom: 5px;
   margin-right: 3px;
@@ -155,7 +214,19 @@ input[type=button]:hover {
 }
 
 
+.play-again {
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+  width: 8rem;
+  font-size: 20px;
+  font-weight: bold;
+}
 
+.play-again:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
 
 img {
   border-radius: 12px;
