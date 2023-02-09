@@ -55,14 +55,6 @@ let rival = [{
   "types": [
   "Colorless"
   ],
-  "evolvesFrom": "Dragonair",
-  "abilities": [
-  {
-  "name": "Step In",
-  "text": "Once during your turn (before your attack), if Dragonite is on your Bench, you may switch it with your Active Pokémon.",
-  "type": "Pokémon Power"
-  }
-  ],
   "attacks": [
   {
   "name": "Slam",
@@ -86,74 +78,13 @@ let rival = [{
   "retreatCost": [
   "Colorless"
   ],
-  "convertedRetreatCost": 1,
-  "set": {
-  "id": "base3",
-  "name": "Fossil",
-  "series": "Base",
-  "printedTotal": 62,
-  "total": 62,
-  "legalities": {
-  "unlimited": "Legal"
-  },
-  "ptcgoCode": "FO",
-  "releaseDate": "1999/10/10",
-  "updatedAt": "2020/08/14 09:35:00",
-  "images": {
-  "symbol": "https://images.pokemontcg.io/base3/symbol.png",
-  "logo": "https://images.pokemontcg.io/base3/logo.png"
-  }
-  },
-  "number": "4",
-  "artist": "Kagemaru Himeno",
-  "rarity": "Rare Holo",
-  "flavorText": "An extremely rarely seen marine Pokémon. Its intelligence is said to match that of humans.",
   "nationalPokedexNumbers": [
   149
   ],
-  "legalities": {
-  "unlimited": "Legal"
-  },
   "images": {
   "small": "https://images.pokemontcg.io/base3/4.png",
   "large": "https://images.pokemontcg.io/base3/4_hires.png"
   },
-  "tcgplayer": {
-  "url": "https://prices.pokemontcg.io/tcgplayer/base3-4",
-  "updatedAt": "2023/02/06",
-  "prices": {
-  "1stEditionHolofoil": {
-  "low": 115.99,
-  "mid": 164.98,
-  "high": 398.99,
-  "market": 238.09
-  },
-  "unlimitedHolofoil": {
-  "low": 32.99,
-  "mid": 60,
-  "high": 99.99,
-  "market": 69.69,
-  "directLow": 40
-  }
-  }
-  },
-  "cardmarket": {
-  "url": "https://prices.pokemontcg.io/cardmarket/base3-4",
-  "updatedAt": "2023/02/06",
-  "prices": {
-  "averageSellPrice": 49.9,
-  "lowPrice": 4.5,
-  "trendPrice": 46.02,
-  "reverseHoloTrend": 40.43,
-  "lowPriceExPlus": 30,
-  "avg1": 34,
-  "avg7": 41.62,
-  "avg30": 47.2,
-  "reverseHoloAvg1": 81.66,
-  "reverseHoloAvg7": 48.96,
-  "reverseHoloAvg30": 48.56
-  }
-  }
   },{
     "id": "base6-66",
     "name": "Tentacruel",
@@ -166,7 +97,6 @@ let rival = [{
     "types": [
     "Water"
     ],
-    "evolvesFrom": "Tentacool",
     "attacks": [
     {
     "name": "Supersonic",
@@ -194,74 +124,9 @@ let rival = [{
     "value": "×2"
     }
     ],
-    "set": {
-    "id": "base6",
-    "name": "Legendary Collection",
-    "series": "Other",
-    "printedTotal": 110,
-    "total": 110,
-    "legalities": {
-    "unlimited": "Legal"
-    },
-    "ptcgoCode": "LC",
-    "releaseDate": "2002/05/24",
-    "updatedAt": "2020/08/14 09:35:00",
-    "images": {
-    "symbol": "https://images.pokemontcg.io/base6/symbol.png",
-    "logo": "https://images.pokemontcg.io/base6/logo.png"
-    }
-    },
-    "number": "66",
-    "artist": "Kagemaru Himeno",
-    "rarity": "Uncommon",
-    "flavorText": "The tentacles are normally kept short. On hunts, the are extended to ensnare and immobilize prey.",
-    "nationalPokedexNumbers": [
-    73
-    ],
-    "legalities": {
-    "unlimited": "Legal"
-    },
     "images": {
     "small": "https://images.pokemontcg.io/base6/66.png",
     "large": "https://images.pokemontcg.io/base6/66_hires.png"
-    },
-    "tcgplayer": {
-    "url": "https://prices.pokemontcg.io/tcgplayer/base6-66",
-    "updatedAt": "2023/02/06",
-    "prices": {
-    "normal": {
-    "low": 0.74,
-    "mid": 1.55,
-    "high": 3,
-    "market": 1.31,
-    "directLow": 1.15
-    },
-    "reverseHolofoil": {
-    "low": 22.76,
-    "mid": 25.13,
-    "high": 27.3,
-    "market": 25.42
-    }
-    }
-    },
-    "cardmarket": {
-    "url": "https://prices.pokemontcg.io/cardmarket/base6-66",
-    "updatedAt": "2023/02/06",
-    "prices": {
-    "averageSellPrice": 0.53,
-    "lowPrice": 0.15,
-    "trendPrice": 0.57,
-    "reverseHoloSell": 24.99,
-    "reverseHoloLow": 12,
-    "reverseHoloTrend": 27.84,
-    "lowPriceExPlus": 0.21,
-    "avg1": 0.44,
-    "avg7": 0.49,
-    "avg30": 0.58,
-    "reverseHoloAvg1": 24.99,
-    "reverseHoloAvg7": 22.17,
-    "reverseHoloAvg30": 17.93
-    }
     }
     },{
       "id": "base1-12",
@@ -310,66 +175,12 @@ let rival = [{
       "Colorless"
       ],
       "convertedRetreatCost": 1,
-      "set": {
-      "id": "base1",
-      "name": "Base",
-      "series": "Base",
-      "printedTotal": 102,
-      "total": 102,
-      "legalities": {
-      "unlimited": "Legal"
-      },
-      "ptcgoCode": "BS",
-      "releaseDate": "1999/01/09",
-      "updatedAt": "2022/10/10 15:12:00",
-      "images": {
-      "symbol": "https://images.pokemontcg.io/base1/symbol.png",
-      "logo": "https://images.pokemontcg.io/base1/logo.png"
-      }
-      },
-      "number": "12",
-      "artist": "Ken Sugimori",
-      "rarity": "Rare Holo",
-      "flavorText": "Very smart and very vengeful. Grabbing one of its many tails could result in a 1,000-year curse.",
       "nationalPokedexNumbers": [
       38
       ],
-      "legalities": {
-      "unlimited": "Legal"
-      },
       "images": {
       "small": "https://images.pokemontcg.io/base1/12.png",
       "large": "https://images.pokemontcg.io/base1/12_hires.png"
-      },
-      "tcgplayer": {
-      "url": "https://prices.pokemontcg.io/tcgplayer/base1-12",
-      "updatedAt": "2023/02/06",
-      "prices": {
-      "holofoil": {
-      "low": 9.62,
-      "mid": 14.98,
-      "high": 40,
-      "market": 21.12,
-      "directLow": 11
-      }
-      }
-      },
-      "cardmarket": {
-      "url": "https://prices.pokemontcg.io/cardmarket/base1-12",
-      "updatedAt": "2023/02/06",
-      "prices": {
-      "averageSellPrice": 6.34,
-      "lowPrice": 0.24,
-      "trendPrice": 9.71,
-      "reverseHoloTrend": 19.81,
-      "lowPriceExPlus": 5,
-      "avg1": 2.02,
-      "avg7": 7.61,
-      "avg30": 6.62,
-      "reverseHoloAvg1": 11.14,
-      "reverseHoloAvg7": 11.53,
-      "reverseHoloAvg30": 12.92
-      }
       }
       },{
         "id": "base3-5",
@@ -384,13 +195,6 @@ let rival = [{
         "Psychic"
         ],
         "evolvesFrom": "Haunter",
-        "abilities": [
-        {
-        "name": "Curse",
-        "text": "Once during your turn (before your attack), you may move 1 damage counter from 1 of your opponent's Pokémon to another (even if it would Knock Out the other Pokémon). This power can't be used if Gengar is Asleep, Confused, or Paralyzed.",
-        "type": "Pokémon Power"
-        }
-        ],
         "attacks": [
         {
         "name": "Dark Mind",
@@ -423,18 +227,11 @@ let rival = [{
         "legalities": {
         "unlimited": "Legal"
         },
-        "ptcgoCode": "FO",
-        "releaseDate": "1999/10/10",
-        "updatedAt": "2020/08/14 09:35:00",
         "images": {
         "symbol": "https://images.pokemontcg.io/base3/symbol.png",
         "logo": "https://images.pokemontcg.io/base3/logo.png"
         }
         },
-        "number": "5",
-        "artist": "Keiji Kinebuchi",
-        "rarity": "Rare Holo",
-        "flavorText": "Under a full moon, this Pokémon likes to mimic the shadows of people and laugh at their fright.",
         "nationalPokedexNumbers": [
         94
         ],
@@ -444,41 +241,6 @@ let rival = [{
         "images": {
         "small": "https://images.pokemontcg.io/base3/5.png",
         "large": "https://images.pokemontcg.io/base3/5_hires.png"
-        },
-        "tcgplayer": {
-        "url": "https://prices.pokemontcg.io/tcgplayer/base3-5",
-        "updatedAt": "2023/02/06",
-        "prices": {
-        "1stEditionHolofoil": {
-        "low": 74.99,
-        "mid": 107,
-        "high": 225.99,
-        "market": 140.69
-        },
-        "unlimitedHolofoil": {
-        "low": 25,
-        "mid": 44.99,
-        "high": 59.99,
-        "market": 44.66
-        }
-        }
-        },
-        "cardmarket": {
-        "url": "https://prices.pokemontcg.io/cardmarket/base3-5",
-        "updatedAt": "2023/02/06",
-        "prices": {
-        "averageSellPrice": 37,
-        "lowPrice": 5,
-        "trendPrice": 35.6,
-        "reverseHoloTrend": 29.47,
-        "lowPriceExPlus": 24.99,
-        "avg1": 49.95,
-        "avg7": 29.23,
-        "avg30": 38.2,
-        "reverseHoloAvg1": 95,
-        "reverseHoloAvg7": 31.3,
-        "reverseHoloAvg30": 31.56
-        }
         }
         }]
 
@@ -528,8 +290,9 @@ const selectCard = (res) => {
     player.push(candidateArr[0])
     count++
     if(count == 4){
+      document.querySelector('.searchForm').remove()
+      document.querySelector('.current-playing').remove()
       initiateBattleGround()
-      // pokemonBattle()
     }
     })  
 }
@@ -537,23 +300,20 @@ const selectCard = (res) => {
 
 //create function to show "start battle" button when user's party has four pokemon
 const initiateBattleGround = () => {
-  if(count >= 4){
-    let battleSpace = document.querySelector('.battle-container')
-    let startButton = document.createElement('button')
-    startButton.className = 'start-button'
-    startButton.innerHTML = "Start Battle!"
-    battleSpace.append(startButton)
-    //start battle event listener
-    startButton.addEventListener("click", () => {
-      document.querySelector('.opponent-party').style.opacity = 1
-      document.querySelector('.searchForm').remove()
-      document.querySelector('.current-playing').remove()
-      startButton.remove()
-      //play battle theme mp3 here
-      //insert time delay function here to give some time for opacity to fade.
-      pokemonBattle()
-    })
-  }
+  let battleSpace = document.querySelector('.battle-container')
+  let startButton = document.createElement('button')
+  startButton.className = 'start-button'
+  startButton.innerHTML = "Start Battle!"
+  battleSpace.append(startButton)
+  //start battle event listener
+  startButton.addEventListener("click", () => {
+    document.querySelector('.opponent-party').style.opacity = 1    
+    startButton.remove()
+    //play battle theme mp3 here
+    //insert time delay function here to give some time for opacity to fade.
+    pokemonBattle()
+  })
+
 }
 
 const rivalPokemonChoice = () => {
@@ -572,35 +332,114 @@ const rivalPokemonChoice = () => {
   //remove face down card in party to reflect correct total num of pokemon
   let rivalRemainingParty = document.querySelectorAll(".face-down")
   rivalRemainingParty[0].remove()
-  // console.log("rival array length before:", rival.length)
   //remove selected pokemon from party
   rival.splice(choiceIndex,1)
-  // console.log("rival array length after:", rival.length)
+}
+
+
+const attackSequence = (damage, attackType) => {
+  //determine damage value with weaknesses and resistance considered:
+  let trueDamage;
+  if(rivalStats.currentPokemon.hasOwnProperty("weaknesses")){//not all pokemone have weaknesses so we must check for one
+    if(attackType == rivalStats.currentPokemon.weaknesses[0].type){
+      trueDamage = damage * 2
+    }else{
+      trueDamage = damage
+    }
+  }else{
+    if(attackType == rivalStats.currentPokemon.resistances[0].type){
+      trueDamage = damage/2
+    }else{
+      trueDamage = damage
+    }
+  }
+
+  rivalStats.currentPokemon.hp = parseInt(rivalStats.currentPokemon.hp) - trueDamage
+  let rivalHealth = document.querySelector('.opponent-health')
+  if(rivalStats.currentPokemon.hp > 0){
+    rivalHealth.innerHTML =  `HP: ${rivalStats.currentPokemon.hp}`
+  }else{
+    rivalHealth.innerHTML =  "HP: 0"
+  }
+  
+  
+  if(rivalStats.currentPokemon.hp <= 0){
+    let rivalCard = document.querySelector('.rival-current')
+    rivalCard.remove()
+    rivalStats.numPokemon--
+    if(rivalStats.numPokemon > 0){
+      rivalPokemonChoice()
+    }else{
+      let winMessageArea = document.querySelector('.battle-container')
+      let winMessage = document.createElement('p')
+      winMessage.innerText = "You Win!"
+      winMessageArea.prepend(winMessage)
+    }
+
+  }
 }
 
 const choosePokemon = () => {
   const myParty = document.querySelectorAll('.add-pokemon')
   for(let i = 0; i < myParty.length; i++){
+    
     myParty[i].addEventListener("click", () => {
       playerStats.currentPokemon = player[i]
       //move selected pokemon into battle slot
       let playerCurrent = document.querySelector(".player-current-card")
-      playerCurrent.innerHTML += `<img class="rival-current" src='${playerStats.currentPokemon.images.small}' alt='${playerStats.currentPokemon.name}'>`
+      playerCurrent.innerHTML += `<img class="player-choice" src='${playerStats.currentPokemon.images.small}' alt='${playerStats.currentPokemon.name}'>`
+      
       //display selected pokemon's health
       let pokemonHealth = document.querySelector('.player-health')
       pokemonHealth.innerHTML = `HP:${parseInt(playerStats.currentPokemon.hp)}`
       player.splice(i, 1)
       myParty[i].remove()
-      console.log(playerStats)
+      console.log(rivalStats.currentPokemon)
+      //add buttons for attacks
+      if(playerStats.currentPokemon.hasOwnProperty("attacks")){
+        playerStats.currentPokemon.attacks.forEach((attack) => {
+          console.log(attack)
+          let attackOptions = document.querySelector('.attack-options')
+          let attackButton = document.createElement('button')
+          attackButton.setAttribute('class', 'attack')
+          attackButton.setAttribute('id', `${attack.name}`)
+          attackButton.setAttribute('element', `${attack.cost[0]}`)
+          console.log("attack type: ", attack.cost[0])
+          if(attack.damage === ""){
+            attackButton.setAttribute('damage', 10) //several attacks have "0 damage" that increases with some chance condition that cannot be replicated here, setting these attacks to default 10 for convenience.
+          }else{
+            attackButton.setAttribute('damage', `${parseInt(attack.damage.replace('+', ''))}`)
+          }
+          console.log(`${parseInt(attack.damage.replace('+', ''))}`)
+          attackButton.innerHTML = `${attack.name}`
+          attackOptions.append(attackButton)
+          attackButton.addEventListener("click", function(){
+            let damage = attackButton.getAttribute('damage')
+            let attackType = attackButton.getAttribute('element')
+            attackSequence(damage, attackType)
+          })
+        })
+      }else{
+        let attackOptions = document.querySelector('.attack-options')
+        let attackButton = document.createElement('button')
+        attackButton.setAttribute('class', 'attack')
+        attackButton.setAttribute('id', "struggle")
+        attackButton.setAttribute('damage', 5)
+        attackButton.innerHTML = "Struggle"
+        attackOptions.append(attackButton)
+        attackButton.addEventListener("click", function(){
+          let damage = attackButton.getAttribute('damage')
+          console.log('damage: ', damage)
+          attackSequence(damage)
+        })
+      }
     })
   }
 }
 
-const attackSequence = () => {
-  //display pokemon's attacks as event listeners
 
-  //add event listener for item. If item used, turn ends
-}
+
+
 
 const pokemonBattle = () => {
   //rival sends out first pokemon
@@ -608,6 +447,7 @@ const pokemonBattle = () => {
   //player selects any pokemon from party
   choosePokemon()
   //determine which pokemon attacks first based on speed stat
+  // attackSequence()
   //determine if user wants to attack or use item
   //attack function: include element effect, hp reduction
   //if no remaining pokemon in rival or player's party, then display win or lose message
@@ -629,9 +469,6 @@ async function getData(event){
     .then(res => {
       selectCard(res)
     })
-    // .then(res => {
-    //   pokemonBattle()
-    // }) 
     .catch(err => {
       console.log("something went wrong...", err)
     })

@@ -84,8 +84,8 @@ input[type=button]:hover {
   bottom: 0;
 }
 .opponent-current-card {
-  position: absolute;
-  left: 90px;
+  position: relative;
+  /* left: 90px; */
   /* border: 1px solid white; */
 }
 .opponent-health {
@@ -111,18 +111,35 @@ input[type=button]:hover {
 }
 
 .player-current {
-  /* border: 1px solid white;  */
-  height: 90%;
+  height: 100%;
   width: 35%;
   position: relative; 
 }
 
 .player-current-card {
   position: absolute;
-  bottom: 0;
+  padding: 0;
+  margin-top: 50px;
   left: 40px;
+  height: auto;
+  width: auto;
 }
 
+.attack {
+  border: none;
+  border-radius: 12px;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 3px;
+  font-weight: bold;
+  
+}
+
+.attack:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
 
 .inventory {
   opacity: 1;
@@ -139,13 +156,14 @@ input[type=button]:hover {
 
 
 
+
 img {
   border-radius: 12px;
   max-height: 90px;
 }
 
 .rival-current,
-.player-current-card,
+.player-choice,
 .current-playing,
 .item {
   max-height: 180px;
@@ -164,7 +182,7 @@ img {
 
 
   .rival-current,
-  .player-current-card,
+  .player-choice,
   .current-playing,
   .item {
     height: 130px
