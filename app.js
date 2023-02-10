@@ -11,19 +11,13 @@ let myDeployedPokemon = document.querySelector(".player-deployed")
 //counter for num of pokemon user has selected
 let count = 0
 
-// //start game condition
-let beginBattle = false
-
-//game over condition
-let gameOver = false
-
 //player and rival array consisting of pokemon in respective parties
 let player = []
 let playerStats = {
   numPokemon: 4,
   turn: false, //player has first move by default in this game
   setup: false, //ensure player has selected four pokemon to initiate battle sequence
-  deployed: false,
+  deployed: false, //tracks if player can send a pokemon out
   currentPokemon: [],
 }
 
@@ -227,10 +221,13 @@ let songs = {
 let startSong = new Audio('Audio/1-01. Opening.mp3')
 startSong.loop = true
 startSong.play()
+
 let battleSong = new Audio('Audio/1-28. Battle (Vs. Gym Leader).mp3')
 battleSong.loop = true
+
 let victorySong = new Audio('Audio/1-29. Victory (Vs. Gym Leader).mp3')
 victorySong.loop = true
+
 let playButton = document.querySelector('.play-music')
 playButton.addEventListener('click', function(){
   if(songs.starting){
@@ -242,6 +239,7 @@ playButton.addEventListener('click', function(){
   }
   
 })
+
 let pauseButton = document.querySelector('.pause-music')
 pauseButton.addEventListener("click", function(){
   if(songs.starting){
@@ -279,17 +277,12 @@ const playerPokemonSong = () => {
   playerSong.loop = false
   playerSong.play()
 }
+
 const playAttackSong = () => {
   let attackSong = new Audio('Audio/Slash.mp3')
   attackSong.loop = false
   attackSong.play()
 }
-
-//wait function
-function wait(ms){
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 
 //GAME FUNCTIONS
 
@@ -591,9 +584,7 @@ const rivalAttack = () => {
     
     rivalStats.turn = false
     playerStats.turn = true
-    // playerAttack()
     if(playerStats.currentPokemon.hp <= 0){
-      
       playerStats.numPokemon--
       let playerCurrent = document.querySelector(".player-deployed-pokemon")
       playerCurrent.remove()
@@ -601,7 +592,6 @@ const rivalAttack = () => {
       playerButtons.forEach((button) => {
         button.remove()
       })
-      
       playerStats.deployed = false
       if(playerStats.numPokemon > 0){
         playerPokemonSelection()

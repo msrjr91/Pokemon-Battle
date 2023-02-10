@@ -94,12 +94,10 @@ p {
 .rival-space {
   position: relative;
   height: 50%;
-  border: 2 solid red;  
   text-align: center;
 }
 
 .rival-party {
-  border: 2 solid red;  
   position: absolute;
   top: 5px;
   left: 5px;
@@ -108,7 +106,6 @@ p {
 }
 
 .rival-deployed {
-  border: 2 solid red;  
   position: absolute;
   top: 0;
   right: 30px;
@@ -155,11 +152,9 @@ p {
 .player-space {
   position: relative;
   height: 50%;
-  border: 2 solid blue; 
 }
 
 .player-party {
-  border: 2 solid red;  
   position: absolute;
   bottom: 5px;
   right: 5px;
@@ -169,7 +164,6 @@ p {
 }
 
 .player-deployed {
-  border: 2 solid red;  
   position: absolute;
   bottom: 10px;
   left: 30px;
@@ -179,7 +173,6 @@ p {
 
 .player-message {
   opacity: 0;
-  border: 2 solid red;  
   display: inline-block;
   margin-top: 6rem;
   margin-right: 18rem;
