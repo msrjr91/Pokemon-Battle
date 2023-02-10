@@ -22,4 +22,4 @@ This is the very first project assigned through General Assembly and is meant to
 
 
 ## Deployed on Surge:
-SEIR123-pokemon.surge.sh
+[Surge Link](SEIR123-pokemon.surge.sh)
