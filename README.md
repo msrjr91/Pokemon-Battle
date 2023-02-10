@@ -19,3 +19,7 @@ This project demonstrates HTML, CSS, and Javascript in order to create a simplif
 
 ## About this project:
 This is the very first project assigned through General Assembly and is meant to be for educational purposes only.
+
+
+## Deployed on Surge:
+SEIR123-pokemon.surge.sh
