@@ -319,6 +319,12 @@ const addCard = (res) => {
       searchBar.remove()
       searchedPokemon.remove()
       playBattleSong()
+      let introMessage = document.querySelector(".challenge-message")
+      introMessage.innerHTML = "You've been challenged to a battle!"
+      introMessage.style.opacity = 1
+      setTimeout(function(){
+        introMessage.remove()
+      }, 2500)
       battleMain()
     }
     })
@@ -359,7 +365,8 @@ inputBar.addEventListener("keypress", (event)=>{
 
 
 
-//Actual Game Function
+//Actual Game Functions
+
 const playerPokemonSelection = () => {
   let myParty = document.querySelectorAll(".my-party")
   for(let i = 0; i < myParty.length; i++){
@@ -418,6 +425,7 @@ const playerAttack = (attackName, damage, element) => {
     playAttackSong()
     setTimeout(function(){
       playerMessageDisplay.remove()
+      playerMessage.style.opacity = 0
     }, 2000)
     let trueDamage;
     let effectivenessDisplay;
@@ -450,8 +458,10 @@ const playerAttack = (attackName, damage, element) => {
       playerMessageDisplay.setAttribute("class", "player-inner-display")
       playerMessageDisplay.innerHTML = `It's ${effectivenessDisplay}!`
       playerMessage.append(playerMessageDisplay)
+      playerMessage.style.opacity = 1
       setTimeout(function(){
         playerMessageDisplay.remove()
+        playerMessage.style.opacity = 0
       },2000)
     }
     rivalStats.turn = true
@@ -468,6 +478,7 @@ const playerAttack = (attackName, damage, element) => {
         rivalPokemonSelection()
       }else{
         playVictorySong()
+        rivalStats.turn = false
         let winMessageArea = document.querySelector('.results-container')
       
         let playAgain = document.createElement('button')
@@ -524,7 +535,13 @@ const rivalAttack = () => {
     rivalMessageDisplay.setAttribute("class", "rival-inner-display")
     rivalMessageDisplay.innerHTML = `${rivalStats.currentPokemon.name} used ${rivalAttackChoice}!`
     rivalMessage.append(rivalMessageDisplay)
+    rivalMessage.style.opacity = 1;
     playAttackSong()
+    setTimeout(function(){
+      rivalMessageDisplay.remove()
+      rivalMessage.style.opacity = 0
+    }, 2000)
+
     let attackType = rivalStats.currentPokemon.attacks[rivalAttackIndex].cost[0]
     let damage;
     if(rivalStats.currentPokemon.attacks[rivalAttackIndex].damage == ''){
@@ -558,23 +575,25 @@ const rivalAttack = () => {
     }else{
       playerHealth.innerHTML = "HP: 0"
     }
-  
-    setTimeout(function(){
-      rivalMessageDisplay.remove()
-      if(effectivenessDisplay != ""){
-        let rivalMessageDisplay = document.createElement('div')
-        rivalMessageDisplay.setAttribute("class", "rival-inner-display")
-        rivalMessageDisplay.innerHTML = `It's ${effectivenessDisplay}!`  
-        rivalMessage.append(rivalMessageDisplay)      
-      }
+   
+   
+    if(effectivenessDisplay != ""){
+      let rivalMessageDisplay = document.createElement('div')
+      rivalMessageDisplay.setAttribute("class", "rival-inner-display")
+      rivalMessageDisplay.innerHTML = `It's ${effectivenessDisplay}!`  
+      rivalMessage.append(rivalMessageDisplay) 
+      rivalMessage.style.opacity = 1 
       setTimeout(function(){
         rivalMessageDisplay.remove()
-      }, 1500)
-    }, 1500)
+        rivalMessage.style.opacity = 0
+      }, 2000)    
+    }
+    
     rivalStats.turn = false
     playerStats.turn = true
     // playerAttack()
     if(playerStats.currentPokemon.hp <= 0){
+      
       playerStats.numPokemon--
       let playerCurrent = document.querySelector(".player-deployed-pokemon")
       playerCurrent.remove()
@@ -582,23 +601,27 @@ const rivalAttack = () => {
       playerButtons.forEach((button) => {
         button.remove()
       })
-      playerStats.deployed = false
-    }else{
-      let losingMessageArea = document.querySelector('.results-container')
       
-      let playAgain = document.createElement('button')
-      playAgain.innerHTML = "Play Again"
-      playAgain.setAttribute("class", "play-again")
-      losingMessageArea.prepend(playAgain)
-
-      let losingMessage = document.createElement('h2')
-      losingMessage.innerText = "You Lose!"
-      losingMessageArea.prepend(losingMessage)
-
-      playAgain.addEventListener("click", function(){
-        window.location.reload()
-      })
-
+      playerStats.deployed = false
+      if(playerStats.numPokemon > 0){
+        playerPokemonSelection()
+      }else{
+        let losingMessageArea = document.querySelector('.results-container')
+        
+        let playAgain = document.createElement('button')
+        playAgain.innerHTML = "Play Again"
+        playAgain.setAttribute("class", "play-again")
+        losingMessageArea.prepend(playAgain)
+  
+        let losingMessage = document.createElement('h2')
+        losingMessage.innerText = "You Lose!"
+        losingMessageArea.prepend(losingMessage)
+  
+        playAgain.addEventListener("click", function(){
+          window.location.reload()
+        })
+  
+      }
     }
   }
 }
@@ -609,7 +632,6 @@ const battleMain = () => {
   rivalPokemonSelection()
   playerPokemonSelection()
   playerAttack()
-
 }
 
 

@@ -16,6 +16,10 @@ h1 {
   margin-bottom: 10px;
 }
 
+h2 {
+  margin-top: 90px;
+}
+
 h3 {
   font-size: 24px;
 }
@@ -116,6 +120,7 @@ p {
   display: inline-block;
   margin-top: 6rem;
   margin-left: 18rem;
+  opacity: 0;
 }
 
 .start-battle {
@@ -208,7 +213,7 @@ img {
   opacity: 0.8;
 }
 
-.attack {
+.player-attack-buttons {
   opacity: 1;
   border: none;
   border-radius: 12px;
@@ -219,7 +224,7 @@ img {
   margin-right: 4px;
 }
 
-.attack:hover {
+.player-attack-buttons:hover {
   cursor: pointer;
 }
 
@@ -227,3 +232,14 @@ img {
   display: inline;
 }
 
+.results-container {
+  font-size: 28px;
+}
+
+.play-again {
+  border: none;
+  border-radius: 12px;
+  padding: 7px;
+  width: 190px;
+  font-size: 26px;
+}
