@@ -4,11 +4,30 @@ body {
   text-align: center;
   height: 100vh;
   font-family: raleway; 
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 40px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+input[type=button]:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 .music-buttons {
   position: absolute;
-  right: 0;
+  left: 0;
   top: 0;
   opacity: 0.8;
 }
@@ -31,243 +50,180 @@ body {
   opacity: 0.8;
 }
 
-
-
-
-h1 {
-  font-style: italic;
-  font-weight: bold;
-  font-size: 40px;
-}
-
-h2 {
-  color: black;
-  font-size: 35px;
-}
-
-p {
-  margin: 0;
-  font-size: 25px;
-}
-
-
-form {
-  border-radius: 12px;
-  opacity: 1;
-}
-
 input {
   font-size: 1rem;
   padding: 12px;
   border-radius: 12px; 
   color: gray;
   border: none;
-  /* width: 20%; */
 }
 
-.current-playing:hover {
-  opacity: 0.8;
-  cursor: pointer;
-}
-
-.add-pokemon:hover {
-  cursor: pointer;
-  opacity: 0.8;
-}
-
-.start-button {
-  padding: 18px;
-  border-radius: 12px;
-  color: gray;
-  border: none;
-  margin-top: 10px;
-  font-size: 20px;
-}
-
-.start-button:hover {
-  cursor: pointer;
-  opacity: 0.7;
-}
-
-
-/* THIS ISN'T WORKING....WHYYYY A;SKDHJF;ASKDJFH */
-input[type=button]:hover {
-  cursor: url('Poké_Ball_icon.svg.png'), pointer;
-  opacity: 0.8;
-}
-
-.card-container {
-  margin-top: 20px; 
-}
 .battle-container {
-  width: 90%;
-  margin-left: 95px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-}
-.battle-space {
-  height:60vh;
-  width: auto;
+  top: 50%;
+  left: 50%;
+  width: 65em;
+  height: 35em; 
+  margin-top: -10em;
+  margin-left: -32em;
   border: 2px solid black;
   background-image: url('Images/battle.jpeg');
   background-size: cover;
+  position: fixed;
 }
 
-.opponent {
-  /* border: 1px solid white; */
-  height: 50%;
-  position: relative;
-}
-
-.opponent-party {
-  /* border: 1px solid white; */
-  width: 60%;
-  height: 40%;
+p {
+  opacity: 0;
+  transition: opacity 0.3s;
   position: absolute;
-  display: flex;
-  justify-content: space-around;
-  opacity: 0; 
-  transition: opacity 5s;
-  margin-top: 20px;
-
-}
-
-.opponent-current {
-  /* border: 1px solid white;  */
-  height: 90%;
-  width: 35%;
-  position: relative; 
-  margin-left: auto; 
-  bottom: 0;
-}
-.opponent-current-card {
-  position: relative;
-  width: 80%;
-  margin-left: auto;
-  /* left: 90px; */
-  /* border: 1px solid white; */
-}
-.opponent-health {
-  /* border: 3px solide white; */
-  padding-top: 10px;
-}
-
-.player {
-  /* border: 1px solid white; */
-  height: 50%;
-  position: relative;
-}
-
-.player-party {
-  /* border: 1px solid white; */
-  height: 40%;
-  width: 60%;
-  position: absolute;
-  right: 0;
-  bottom: 0; 
-  display: flex;
-  justify-content: space-around;
-}
-
-.player-current {
-  height: 100%;
-  width: 35%;
-  position: relative; 
-}
-
-.player-current-card {
-  position: absolute;
-  padding: 0;
-  margin-top: 10px;
-  left: 40px;
-  height: auto;
-  width: auto;
-}
-
-.attack {
-  border: none;
-  border-radius: 12px;
-  padding: 5px;
-  width: 8rem;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-right: 3px;
-  font-weight: bold;
-  
-}
-
-.player-attack {
   margin-left: auto;
   margin-right: auto;
   left: 0;
   right: 0;
-  position: absolute;
   text-align: center;
+  font-size: 18px;
+  background-color: white;
+  border: 1px solid black;
+  width: 40%;
+  padding: 8px;
+}
 
+.rival-space {
+  position: relative;
+  height: 50%;
+  border: 2 solid red;  
+  text-align: center;
+}
+
+.rival-party {
+  border: 2 solid red;  
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  opacity: 1;
+  height: auto;
+}
+
+.rival-deployed {
+  border: 2 solid red;  
+  position: absolute;
+  top: 0;
+  right: 30px;
+  opacity: 1;
+  height: auto;
+}
+
+.rival-message {  
+  display: inline-block;
+  margin-top: 6rem;
+  margin-left: 18rem;
+}
+
+.start-battle {
+  opacity: 0;
+  border: 1px solid black;
+  border-radius: 12px;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: rgb(0, 192, 0);
+  transition: opacity 0.3s;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.start-battle:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.rival-message,
+.player-message {
+  color: black;
+  background: white;
+  border: 1px solid black;
+  padding: 8px;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.player-space {
+  position: relative;
+  height: 50%;
+  border: 2 solid blue; 
+}
+
+.player-party {
+  border: 2 solid red;  
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  opacity: 1;
+  height: auto;
+  display: flex;
+}
+
+.player-deployed {
+  border: 2 solid red;  
+  position: absolute;
+  bottom: 10px;
+  left: 30px;
+  height: auto;
+  opacity: 1;
+}
+
+.player-message {
+  opacity: 0;
+  border: 2 solid red;  
+  display: inline-block;
+  margin-top: 6rem;
+  margin-right: 18rem;
+  padding: 8px;
+}
+
+img {
+  max-height: 140px;
+}
+
+.search-output,
+.deployed-pokemon {
+  max-height: 200px;
+}
+
+.search-output {
+  margin-top: 8px;
+}
+
+.search-output:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.player-party {
+  justify-content: space-between;
+}
+
+.my-party:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.attack {
+  opacity: 1;
+  border: none;
+  border-radius: 12px;
+  position: relative;
+  display: inline;
+  padding: 7px;
+  width: 120px;
+  margin-right: 4px;
 }
 
 .attack:hover {
   cursor: pointer;
-  opacity: 0.8;
 }
 
-.inventory {
-  opacity: 1;
-  margin-bottom: 50px;
+.deployed-pokemon {
+  display: inline;
 }
 
-.all-cards {
-  /* border: 1px solid white; */
-  border-radius: 18px;
-  height: auto;
-  display: flex;
-  justify-content: space-around;
-}
-
-
-.play-again {
-  border: none;
-  border-radius: 12px;
-  padding: 10px;
-  width: 8rem;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.play-again:hover {
-  cursor: pointer;
-  opacity: 0.8;
-}
-
-img {
-  border-radius: 12px;
-  max-height: 90px;
-}
-
-.rival-current,
-.player-choice,
-.current-playing,
-.item {
-  max-height: 180px;
-}
-
-@media screen and (max-width: 1000px) {
-  .all-cards {
-    display: flex;
-    justify-content: space-around;
-    /* flex-wrap: wrap; */
-  }
-
-  img {
-    height: 100px;
-  }
-
-
-  .rival-current,
-  .player-choice,
-  .current-playing,
-  .item {
-    height: 130px
-  }
-}

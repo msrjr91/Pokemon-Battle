@@ -15,83 +15,52 @@
     <img class="play-music" src="Images/play-button.png" alt="play">
     <img class="pause-music" src="Images/video-pause-button.png" alt="pause">
   </div>
-
   <h1 class="title"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif">&nbsp;Pokemon Battling Card Game&nbsp;<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/133.gif"></h1>
-  <form class="searchForm">
+  <form class="search-form">
     <input type="text" value="" placeholder="Search Pokemon here"  id="inputBar">
     <input type="button"  value="Search" id="searchButton">
   </form>
-
-
-  <div class="card-container">
+  <div class="search-container">
 
   </div>
+  <div class="results-container">
+    
+  </div>
 
-
-
+  <!-- everything goes in here -->
   <div class="battle-container">
-
-
-
-   
-    <div class="battle-space">
-      <div class="opponent">
-        <div class="opponent-party">
-          <div class="face-down"><img id="hidden" src="https://images.pokemontcg.io/base3/4.png'" alt='Face Down Card'></div>
-          <div class="face-down"><img id="hidden" src="https://images.pokemontcg.io/base3/4.png'" alt='Face Down Card'></div>
-          <div class="face-down"><img id="hidden" src="https://images.pokemontcg.io/base3/4.png'" alt='Face Down Card'></div>
-          <div class="face-down"><img id="hidden" src="https://images.pokemontcg.io/base3/4.png'" alt='Face Down Card'></div>
-        </div>
-        <div class="opponent-attack">
-
-        </div>
-        <div class="opponent-current">
-          <div class="opponent-current-card">
-            <div class="opponent-health">
-            </div>  
-            
-          </div>
-        </div>
-      </div>    
-
-
-
-      <div class="player">
-        <div class="player-attack"></div>
-        <div class="player-party">
-
-        </div>
-        <div class="player-current">        
-          <div class="player-current-card">
-
-            
-            <div class="player-health">
-            </div>
-            <div class="attack-options">
-
-            </div>
-          
-          </div>
-        </div>
+    <div class="rival-space">
+      <div class="rival-party">
+        <img class="face-down" src="Images/pokemon_back.png" alt="back of card">
+        <img class="face-down" src="Images/pokemon_back.png" alt="back of card">
+        <img class="face-down" src="Images/pokemon_back.png" alt="back of card">
+        <img class="face-down" src="Images/pokemon_back.png" alt="back of card">
       </div>
+      <div class="rival-deployed">
+        <h3 class="rival-hp">HP: --</h3>
+        <!-- <img class="deployed-pokemon" src="Images/pokemon_back.png" alt="back of card"> -->
+      </div>
+      <div class="rival-message"></div>
+    </div>
 
+    <p class="challenge-message"></p>
+    
 
+    <div class="player-space">
+      <div class="player-party">
 
-
+      </div>
+      <div class="player-deployed">
+        <!-- <img class="deployed-pokemon" src="Images/pokemon_back.png" alt="back of card"> -->
+        <h3 class="player-hp">HP: --</h3>
+      </div>
+      <div class="player-message"></div>
     </div>
 
 
 
   </div>
-
-  <!-- <div class="inventory">
-    <h2>Your Items</h2>
-    <div class="all-cards">
-
-    </div>
-   
-  </div> -->
-
+  
   <script src="app.js" type="module"></script>
 </body>
 </html>
